@@ -7,6 +7,9 @@ import { APP_ROUTES } from "./app.routes";
 //MODULOS
 import { PagesModule } from "./pages/pages.module";
 
+//SERVICIOS: dice que es modulo, pero lo que pasa es que aca estan todos los servicios
+import { ServiceModule } from "./services/service.module";
+
 //COMPONENTES
 import { AppComponent } from "./app.component";
 import { LoginComponent } from "./login/login.component";
@@ -15,7 +18,7 @@ import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, RegisterComponent],
-  imports: [BrowserModule, APP_ROUTES, PagesModule, FormsModule],
+  imports: [BrowserModule, APP_ROUTES, PagesModule, FormsModule, ServiceModule],
   providers: [],
   bootstrap: [AppComponent]
 })

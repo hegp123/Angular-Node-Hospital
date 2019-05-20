@@ -11,6 +11,7 @@ import { Graficas1Component } from "./graficas1/graficas1.component";
 import { PagesComponent } from "./pages.component";
 import { IncrementadorComponent } from "../components/incrementador/incrementador.component";
 import { GraficoDonaComponent } from "../components/grafico-dona/grafico-dona.component";
+import { AccoutSettingsComponent } from './accout-settings/accout-settings.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { GraficoDonaComponent } from "../components/grafico-dona/grafico-dona.co
     ProgressComponent,
     Graficas1Component,
     IncrementadorComponent,
-    GraficoDonaComponent
+    GraficoDonaComponent,
+    AccoutSettingsComponent
   ],
   exports: [DashboardComponent, ProgressComponent, Graficas1Component],
   imports: [SharedModule, PAGES_ROUTES, FormsModule, ChartsModule]
