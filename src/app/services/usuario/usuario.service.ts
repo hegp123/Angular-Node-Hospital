@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIO } from 'src/app/config/config';
 import { map } from "rxjs/operators";
 import sweetAlert from 'sweetalert';
-import { routerNgProbeToken } from '@angular/router/src/router_module';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -12,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class UsuarioService {
 
-  usuario: string;
+  usuario: Usuario;
   token: string;
 
   constructor(public http: HttpClient, public router: Router) {
@@ -33,7 +32,7 @@ export class UsuarioService {
      }
    }
 
-   guardarStorage(id: string, token: string, usuario: string){
+   guardarStorage(id: string, token: string, usuario: Usuario){
     localStorage.setItem('id', id);
     localStorage.setItem('token', token);
     localStorage.setItem('usuario', JSON.stringify(usuario));
@@ -50,6 +49,19 @@ export class UsuarioService {
       localStorage.removeItem('usuario');
       this.router.navigate(['/login']);
    }
+
+   loginGoogle( token: string ) {
+
+    let url = URL_SERVICIO + '/login/google';
+
+    return this.http.post( url, { token } )
+                .pipe(map( (resp: any) => {
+                  this.guardarStorage( resp.id, resp.token, resp.usuario );
+                  return true;
+                }));
+
+
+  }
 
    login(usuario: Usuario, recordar:boolean=false){
 
